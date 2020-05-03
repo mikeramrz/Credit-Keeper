@@ -1,0 +1,2 @@
+rootProject.name='Credit Keeper'
+include ':app'
