@@ -3,12 +3,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-<variable
-    name="credit_item"
-    type="com.scavdev.creditkeeper.model.CreditItem" />
+
+        <variable
+            name="credit_item"
+            type="com.scavdev.creditkeeper.model.CreditItem" />
+
+        <import type="java.math.BigDecimal" />
+
     </data>
 
     <com.google.android.material.card.MaterialCardView
+        android:id="@+id/credit_item_card_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:cardCornerRadius="8dp"
@@ -18,12 +23,12 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="horizontal">
+            android:orientation="vertical">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_margin="8dp"
                 android:layout_height="wrap_content"
+                android:layout_margin="8dp"
                 android:orientation="horizontal">
 
                 <com.google.android.material.textview.MaterialTextView
@@ -33,7 +38,7 @@
                     android:layout_height="wrap_content"
                     android:ellipsize="end"
                     android:maxLines="1"
-                    android:text="Amer"
+                    android:text="@{credit_item.creditName}"
                     app:layout_constrainedWidth="true"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -43,7 +48,7 @@
                     style="@style/TextAppearance.MaterialComponents.Subtitle1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Balance: "
+                    android:text="@{String.valueOf(credit_item.outstandingBalance)}"
                     app:layout_constraintStart_toStartOf="@id/text_view_credit_name"
                     app:layout_constraintTop_toBottomOf="@id/text_view_credit_name" />
 
@@ -52,16 +57,14 @@
                     style="@style/TextAppearance.MaterialComponents.Subtitle1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="$2,200.00"
                     app:layout_constraintLeft_toRightOf="@id/text_view_header_label_balance"
                     app:layout_constraintTop_toTopOf="@id/text_view_header_label_balance" />
 
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/text_view_header_label_utilization"
+                    style="@style/TextAppearance.MaterialComponents.Body1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    style="@style/TextAppearance.MaterialComponents.Body1"
-
                     android:text="Utilization"
                     app:layout_constraintBottom_toTopOf="@id/text_view_utilization"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -72,7 +75,6 @@
                     style="@style/TextAppearance.MaterialComponents.Body1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="37%"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="@id/text_view_header_label_utilization"
                     app:layout_constraintTop_toBottomOf="@id/text_view_header_label_utilization" />
@@ -88,7 +90,47 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:visibility="visible">
+
+                <TextView
+                    android:id="@+id/text_view_limit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{String.valueOf(credit_item.creditLimit)}"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/text_view_rate"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="@{String.valueOf(credit_item.interestRate)}"
+                    app:layout_constraintTop_toBottomOf="@id/text_view_due_date"
+                     />
+
+                <TextView
+                    android:id="@+id/text_view_minimum"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{String.valueOf(credit_item.minimumDueMonthly)}"
+                    app:layout_constraintStart_toStartOf="@id/text_view_limit"
+                    app:layout_constraintTop_toBottomOf="@+id/text_view_limit" />
+
+                <TextView
+                    android:id="@+id/text_view_due_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@id/text_view_minimum"
+                    app:layout_constraintStart_toStartOf="@id/text_view_minimum"
+                    android:text="@{String.valueOf(credit_item.dateDue)}"
+                    android:drawableStart="@drawable/ic_date_range_black_24dp"
+                    />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
         </LinearLayout>
 
     </com.google.android.material.card.MaterialCardView>
