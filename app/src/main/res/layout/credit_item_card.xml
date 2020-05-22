@@ -104,10 +104,11 @@
 
                 <TextView
                     android:id="@+id/text_view_rate"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:text="@{String.valueOf(credit_item.interestRate)}"
-                    app:layout_constraintTop_toBottomOf="@id/text_view_due_date"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/text_view_limit"
                      />
 
                 <TextView
