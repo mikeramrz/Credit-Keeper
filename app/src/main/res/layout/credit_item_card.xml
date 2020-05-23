@@ -8,6 +8,10 @@
             name="credit_item"
             type="com.scavdev.creditkeeper.model.CreditItem" />
 
+        <variable
+            name="clickListener"
+            type="com.scavdev.creditkeeper.adapters.ExpandableCreditAdapter.CreditItemCardViewListener" />
+
         <import type="java.math.BigDecimal" />
 
     </data>
@@ -17,6 +21,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:cardCornerRadius="8dp"
+        android:onClick="@{() -> clickListener.onClick(credit_item)}"
         app:cardElevation="8dp"
         app:cardUseCompatPadding="true">
 
@@ -89,10 +94,11 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layout_expandable"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
-                android:visibility="visible">
+                android:visibility="gone">
 
                 <TextView
                     android:id="@+id/text_view_limit"

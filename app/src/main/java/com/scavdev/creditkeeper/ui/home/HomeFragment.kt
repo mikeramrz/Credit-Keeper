@@ -5,7 +5,9 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -21,6 +23,7 @@ import com.scavdev.creditkeeper.databinding.FragmentHomeBinding
 import com.scavdev.creditkeeper.di.ViewModelFactory
 import dagger.android.support.AndroidSupportInjection
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.credit_item_card.*
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.fragment_home.view.*
 import kotlinx.coroutines.CoroutineScope
@@ -56,7 +59,15 @@ class HomeFragment : Fragment() {
         homeViewModel =
             ViewModelProviders.of(this).get(HomeViewModel::class.java)
         val recyclerView =view.findViewById<RecyclerView>(R.id.credit_list)
-        val adapter = ExpandableCreditAdapter()
+        val adapter = ExpandableCreditAdapter(ExpandableCreditAdapter.CreditItemCardViewListener {
+            Toast.makeText(context, "${it}", Toast.LENGTH_LONG).show()
+
+            /*if (layout_expandable.visibility  == View.GONE){
+                layout_expandable.visibility  = View.VISIBLE
+            }else{
+                layout_expandable.visibility  = View.GONE
+            }*/
+        })
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(view.context)
         homeViewModel.creditItems.observe(viewLifecycleOwner, Observer { items ->
