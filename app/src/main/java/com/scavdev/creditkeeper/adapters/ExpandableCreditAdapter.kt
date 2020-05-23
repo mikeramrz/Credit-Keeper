@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.scavdev.creditkeeper.databinding.CreditItemCardBinding
 import com.scavdev.creditkeeper.model.CreditItem
 
-class ExpandableCreditAdapter(val clickListener: CreditItemCardViewListener) :
+class ExpandableCreditAdapter() :
     RecyclerView.Adapter<CreditItemViewHolder>(){
 
 private  var creditItems = emptyList<CreditItem>()
@@ -24,13 +24,10 @@ private  var creditItems = emptyList<CreditItem>()
 
 
     override fun onBindViewHolder(holder: CreditItemViewHolder, position: Int) {
-
-       holder.bind(creditItems[position], clickListener)
-
+       holder.bind(creditItems[position])
     }
 
     internal fun setCreditItems(creditItems:List<CreditItem>){
-
         this.creditItems =  creditItems
         notifyDataSetChanged()
     }

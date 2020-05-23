@@ -59,15 +59,9 @@ class HomeFragment : Fragment() {
         homeViewModel =
             ViewModelProviders.of(this).get(HomeViewModel::class.java)
         val recyclerView =view.findViewById<RecyclerView>(R.id.credit_list)
-        val adapter = ExpandableCreditAdapter(ExpandableCreditAdapter.CreditItemCardViewListener {
-            Toast.makeText(context, "${it}", Toast.LENGTH_LONG).show()
+        val adapter = ExpandableCreditAdapter()
 
-            /*if (layout_expandable.visibility  == View.GONE){
-                layout_expandable.visibility  = View.VISIBLE
-            }else{
-                layout_expandable.visibility  = View.GONE
-            }*/
-        })
+
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(view.context)
         homeViewModel.creditItems.observe(viewLifecycleOwner, Observer { items ->

@@ -1,8 +1,12 @@
 package com.scavdev.creditkeeper.adapters
 
+import android.view.View
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
+import com.scavdev.creditkeeper.R
 import com.scavdev.creditkeeper.databinding.CreditItemCardBinding
 import com.scavdev.creditkeeper.model.CreditItem
+import kotlinx.android.synthetic.main.credit_item_card.view.*
 
 
 class CreditItemViewHolder(private val binding: CreditItemCardBinding) :
@@ -14,12 +18,16 @@ class CreditItemViewHolder(private val binding: CreditItemCardBinding) :
      val creditItemRateTextView: TextView = creditItemView.findViewById(R.id.text_view_rate)
      val creditItemMinimumTextView: TextView = creditItemView.findViewById(R.id.text_view_minimum)
      val creditItemDueDateTextView: TextView = creditItemView.findViewById(R.id.text_view_due_date)*/
-    fun bind(
-        item: CreditItem,
-        clickListener: ExpandableCreditAdapter.CreditItemCardViewListener
-    ) {
+    fun bind(item: CreditItem) {
         binding.creditItem = item
-        binding.clickListener = clickListener
+        binding.root.setOnClickListener {
+            val view = it.findViewById<ConstraintLayout>(R.id.layout_expandable)
+            if (view.visibility  == View.GONE){
+                   view.visibility  = View.VISIBLE
+               }else{
+                   view.visibility  = View.GONE
+               }
+        }
     }
 
 
