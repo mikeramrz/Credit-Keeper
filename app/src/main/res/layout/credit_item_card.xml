@@ -37,7 +37,7 @@
 
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/text_view_credit_name"
-                    style="@style/TextAppearance.MaterialComponents.Headline6"
+                    style="@style/TextAppearance.MaterialComponents.Headline5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:ellipsize="end"
@@ -48,25 +48,19 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/text_view_header_label_balance"
-                    style="@style/TextAppearance.MaterialComponents.Subtitle1"
+                    android:id="@+id/text_view_balance"
+                    style="@style/TextAppearance.MaterialComponents.Headline6"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@{String.valueOf(credit_item.outstandingBalance)}"
+                    android:text="@{`Balance: $` +String.valueOf(credit_item.outstandingBalance)}"
                     app:layout_constraintStart_toStartOf="@id/text_view_credit_name"
                     app:layout_constraintTop_toBottomOf="@id/text_view_credit_name" />
 
-                <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/text_view_balance"
-                    style="@style/TextAppearance.MaterialComponents.Subtitle1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintLeft_toRightOf="@id/text_view_header_label_balance"
-                    app:layout_constraintTop_toTopOf="@id/text_view_header_label_balance" />
+
 
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/text_view_header_label_utilization"
-                    style="@style/TextAppearance.MaterialComponents.Body1"
+                    style="@style/TextAppearance.MaterialComponents.Headline6"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Utilization"
@@ -76,9 +70,11 @@
 
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/text_view_utilization"
-                    style="@style/TextAppearance.MaterialComponents.Body1"
+                    style="@style/TextAppearance.MaterialComponents.Headline6"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:utilizationTextColor="@{credit_item.utilization}"
+                    android:text="@{String.valueOf(credit_item.utilization) + `%`}"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="@id/text_view_header_label_utilization"
                     app:layout_constraintTop_toBottomOf="@id/text_view_header_label_utilization" />
