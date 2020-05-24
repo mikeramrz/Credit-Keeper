@@ -1,5 +1,6 @@
 package com.scavdev.creditkeeper.adapters
 
+import android.transition.TransitionManager
 import android.view.View
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
@@ -22,10 +23,11 @@ class CreditItemViewHolder(private val binding: CreditItemCardBinding) :
         binding.creditItem = item
         binding.root.setOnClickListener {
             val view = it.findViewById<ConstraintLayout>(R.id.layout_expandable)
+            TransitionManager.beginDelayedTransition(binding.creditItemCardView.parent as RecyclerView)
             if (view.visibility  == View.GONE){
-                   view.visibility  = View.VISIBLE
+                view.visibility  = View.VISIBLE
                }else{
-                   view.visibility  = View.GONE
+                view.visibility  = View.GONE
                }
         }
     }
