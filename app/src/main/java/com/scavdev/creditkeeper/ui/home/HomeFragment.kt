@@ -60,12 +60,7 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         homeViewModel =
             ViewModelProviders.of(this).get(HomeViewModel::class.java)
-        val fab: View = view.findViewById(R.id.fab_add_credit_item)
-        fab.setOnClickListener { v ->
-            Snackbar.make(v, "Click!!",Snackbar.LENGTH_SHORT).show()
-            homeViewModel.add()
-            homeViewModel.add2()
-        }
+
         val recyclerView =view.findViewById<RecyclerView>(R.id.credit_list)
         val adapter = ExpandableCreditAdapter()
         recyclerView.adapter = adapter
@@ -73,6 +68,13 @@ class HomeFragment : Fragment() {
         homeViewModel.creditItems.observe(viewLifecycleOwner, Observer { items ->
             items?.let { adapter.setCreditItems(items) }
         })
+
+        val fab: View = view.findViewById(R.id.fab_add_credit_item)
+        fab.setOnClickListener { v ->
+            Snackbar.make(v, "Click!!",Snackbar.LENGTH_SHORT).show()
+            homeViewModel.add()
+            homeViewModel.add2()
+        }
 
     }
 }
