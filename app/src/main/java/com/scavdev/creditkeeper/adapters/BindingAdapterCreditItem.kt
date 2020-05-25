@@ -30,12 +30,12 @@ fun setDateFormat(textView: TextView, dueDate: Date) {
     if (hasDayPassedThisMonth(dueDate, todayDate)){
         todayDate.add(Calendar.MONTH, 1)
         val nextMonthString = SimpleDateFormat("MMM").format(todayDate.time)
-        val textDateString = "$nextMonthString $dueDateDay"
+        val textDateString = " Due: $nextMonthString $dueDateDay"
         textView.text = textDateString
     }
     else{
         val monthString = SimpleDateFormat("MMM").format(todayDate.time)
-        val textDateString = "$monthString $dueDateDay"
+        val textDateString = " Due: $monthString $dueDateDay"
         textView.text = textDateString
     }
 }
