@@ -9,6 +9,16 @@
         android:id="@+id/navigation_home"
         android:name="com.scavdev.creditkeeper.ui.home.HomeFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_navigation_home_to_addCreditItemFragment"
+            app:destination="@id/addCreditItemFragment" />
 
+    </fragment>
+
+    <fragment
+        android:id="@+id/addCreditItemFragment"
+        android:name="com.scavdev.creditkeeper.AddCreditItemFragment"
+        android:label="AddCreditItemFragment">
+    </fragment>
 </navigation>
