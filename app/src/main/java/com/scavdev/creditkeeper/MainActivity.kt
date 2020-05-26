@@ -29,6 +29,14 @@ class MainActivity : AppCompatActivity() {
 
         setupActionBar(navController, appBarConfiguration)
 
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            when (destination.id) {
+                R.id.addCreditItemFragment ->
+                    supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_close_black_24dp)
+
+            }
+        }
+
     }
 
     private fun setupActionBar(
@@ -44,6 +52,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onSupportNavigateUp(): Boolean {
-        return findNavController(R.id.nav_host_fragment).navigateUp(appBarConfiguration)    }
+        return findNavController(R.id.nav_host_fragment).navigateUp(appBarConfiguration)
+    }
 }
 
