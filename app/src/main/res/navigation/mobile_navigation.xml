@@ -19,6 +19,5 @@
     <fragment
         android:id="@+id/addCreditItemFragment"
         android:name="com.scavdev.creditkeeper.AddCreditItemFragment"
-        android:label="AddCreditItemFragment">
-    </fragment>
+        android:label="Add Credit Item"></fragment>
 </navigation>

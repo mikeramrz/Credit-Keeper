@@ -1,6 +1,5 @@
 package com.scavdev.creditkeeper
 
-import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -8,14 +7,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.TextView
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.scavdev.creditkeeper.databinding.AddCreditItemFragmentBinding
 import com.scavdev.creditkeeper.di.ViewModelFactory
 import dagger.android.support.AndroidSupportInjection
-import kotlinx.android.synthetic.*
 import javax.inject.Inject
 
 
@@ -31,6 +28,7 @@ class AddCreditItemFragment : Fragment() {
         AndroidSupportInjection.inject(this)
         super.onCreate(savedInstanceState)
         addViewModel = ViewModelProvider(this, viewModelFactory).get(AddCreditItemViewModel::class.java)
+
     }
 
     override fun onCreateView(
@@ -38,13 +36,14 @@ class AddCreditItemFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
+
         binding = DataBindingUtil.inflate(
             inflater, R.layout.add_credit_item_fragment,
             container, false
         )
         binding.viewmodel = addViewModel
-        binding.lifecycleOwner = viewLifecycleOwner
-
+        binding.lifecycleOwner = this
         return inflater.inflate(R.layout.add_credit_item_fragment, container, false)
     }
 
