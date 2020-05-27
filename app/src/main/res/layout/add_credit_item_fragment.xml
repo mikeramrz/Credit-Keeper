@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-    <variable
-        name="viewmodel"
-        type="com.scavdev.creditkeeper.AddCreditItemViewModel" />
+
+        <variable
+            name="viewmodel"
+            type="com.scavdev.creditkeeper.AddCreditItemViewModel" />
     </data>
 
     <FrameLayout
@@ -14,13 +16,192 @@
         android:layout_height="match_parent"
         tools:context=".AddCreditItemFragment">
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/button_add"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:layout_gravity="center"
-            android:text="jnbajlhrngiwer" />
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/input_layout_credit_name"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Credit Name"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edit_text_credit_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/input_layout_outstanding_balance"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:hint="Outstanding"
+                    app:layout_constraintEnd_toStartOf="@id/card_guideline"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/input_layout_credit_name">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edit_text_outstanding_balance"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:inputType="numberDecimal"
+                        android:maxLength="9" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    style="@style/TextAppearance.MaterialComponents.Headline3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:text="/"
+                    app:layout_constraintBottom_toBottomOf="@id/input_layout_outstanding_balance"
+                    app:layout_constraintEnd_toEndOf="@id/card_guideline"
+                    app:layout_constraintStart_toStartOf="@id/card_guideline"
+                    app:layout_constraintTop_toTopOf="@id/input_layout_outstanding_balance" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/input_layout_credit_limit"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:hint="Credit Limit"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/card_guideline"
+                    app:layout_constraintTop_toBottomOf="@id/input_layout_credit_name">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edit_text_credit_limit"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:inputType="numberDecimal"
+                        android:maxLength="9" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    android:id="@+id/text_view_label_utilization"
+                    style="@style/TextAppearance.MaterialComponents.Headline6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="Utilization"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/input_layout_outstanding_balance" />
+
+                <TextView
+                    android:id="@+id/text_view_utilization"
+                    style="@style/TextAppearance.MaterialComponents.Headline5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="45%"
+                    app:layout_constraintEnd_toEndOf="@id/text_view_label_utilization"
+                    app:layout_constraintStart_toStartOf="@id/text_view_label_utilization"
+                    app:layout_constraintTop_toBottomOf="@id/text_view_label_utilization" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/input_layout_min_monthly"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:hint="Min Monthly"
+                    app:layout_constraintEnd_toEndOf="@id/input_layout_outstanding_balance"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/text_view_utilization">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edit_text_min_monthly"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:inputType="numberDecimal"
+                        android:maxLength="6" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/input_layout_interest_rate"
+                    android:layout_marginTop="8dp"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:hint="APR"
+                    app:layout_constraintEnd_toEndOf="@id/input_layout_min_monthly"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/input_layout_min_monthly">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edit_text_interest_rate"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:inputType="numberDecimal"
+                        android:maxLength="4" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    android:id="@+id/label_due_date"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="Usual Due Date:"
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp"
+                    app:layout_constraintBottom_toTopOf="@id/input_layout_due_date"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/input_layout_credit_limit" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/input_layout_due_date"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/due_date_day_month_prompt"
+                    app:layout_constraintBottom_toBottomOf="@id/input_layout_interest_rate"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/input_layout_credit_limit">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edit_text_due_date"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:focusable="false"
+                        android:inputType="numberDecimal"
+                        android:longClickable="false"
+                        android:maxLength="2" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+                    android:id="@+id/button_add"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="Add Credit Item"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/input_layout_interest_rate" />
+
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/card_guideline"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.5" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+
 
     </FrameLayout>
 </layout>
