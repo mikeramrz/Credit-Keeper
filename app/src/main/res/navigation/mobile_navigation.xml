@@ -12,7 +12,12 @@
         tools:layout="@layout/fragment_home">
         <action
             android:id="@+id/action_navigation_home_to_addCreditItemFragment"
-            app:destination="@id/addCreditItemFragment" />
+            app:destination="@id/addCreditItemFragment"
+            app:enterAnim="@anim/slide_up"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/slide_down"
+            />
 
     </fragment>
 
@@ -22,6 +27,9 @@
         android:label="Add Credit Item">
         <action
             android:id="@+id/addCreitFragmentCloseToHomeFragment"
+            app:destination="@id/navigation_home"
+            app:enterAnim="@anim/fade_in"
+            app:exitAnim="@anim/slide_down"
             />
 
     </fragment>
