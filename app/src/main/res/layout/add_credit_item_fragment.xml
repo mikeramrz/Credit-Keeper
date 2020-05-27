@@ -82,6 +82,7 @@
                     android:hint="Credit Limit"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@id/card_guideline"
+                    app:layout_constraintTop_toTopOf="@id/input_layout_outstanding_balance"
                     app:layout_constraintTop_toBottomOf="@id/input_layout_credit_name">
 
                     <com.google.android.material.textfield.TextInputEditText
