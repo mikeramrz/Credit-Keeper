@@ -1,6 +1,5 @@
 package com.scavdev.creditkeeper
 
-import android.app.DatePickerDialog
 import android.icu.util.Calendar
 import android.os.Bundle
 import android.util.Log
@@ -9,8 +8,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.DatePicker
-import android.widget.EditText
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -58,21 +55,11 @@ class AddCreditItemFragment : Fragment() {
         val button: Button = view.findViewById(R.id.button_add)
         val editTextDueDate: TextInputEditText = view.findViewById(R.id.edit_text_due_date)
 
-        val c = Calendar.getInstance()
-        val year = c.get(Calendar.YEAR)
-        val month = c.get(Calendar.MONTH)
-        val day = c.get(Calendar.DAY_OF_MONTH)
         editTextDueDate.setOnClickListener {
-            val datePickerDialog = DatePickerDialog(
-                view.context,
-                DatePickerDialog.OnDateSetListener { view, _, _, mDay ->
-                    editTextDueDate.setText(mDay.toString())
-                }, year, month, day
-            )
-            c.set(Calendar.DAY_OF_MONTH, c.getActualMinimum(Calendar.DAY_OF_MONTH))
-            datePickerDialog.datePicker.minDate = c.timeInMillis
-            c.set(Calendar.DAY_OF_MONTH, c.getActualMaximum(Calendar.DAY_OF_MONTH))
-            datePickerDialog.datePicker.maxDate = c.timeInMillis
+            val datePickerDialog = DayOfMonthDatePickerDialog(view.context, Calendar.getInstance())
+            datePickerDialog.setOnDateSetListener { _, _, _, dayNum ->
+               editTextDueDate.setText(dayNum.toString())
+            }
             datePickerDialog.show()
         }
         button.setOnClickListener {
