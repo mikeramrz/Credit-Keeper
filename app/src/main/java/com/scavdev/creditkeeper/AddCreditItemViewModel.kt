@@ -8,12 +8,12 @@ import javax.inject.Inject
 class AddCreditItemViewModel @Inject constructor(private val creditRepository: ICreditRepository) :
     ViewModel() {
 
-    val creditName = MutableLiveData<String>()
-    val outStandingBalance = MutableLiveData<String>()
-    val creditLimit = MutableLiveData<String>()
-    val minMonthly = MutableLiveData<String>()
-    val interestRate = MutableLiveData<String>()
-    val utilization = MutableLiveData<String>()
+    val creditNameLiveData = MutableLiveData<String>()
+    val outStandingBalanceLiveData = MutableLiveData<String>()
+    val creditLimitLiveData = MutableLiveData<String>()
+    val minMonthlyLiveData = MutableLiveData<String>()
+    val interestRateLiveData = MutableLiveData<String>()
+    val utilizationLiveData: MediatorLiveData<String> = MediatorLiveData()
 
 
 

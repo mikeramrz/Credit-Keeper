@@ -38,22 +38,7 @@ fun setDateFormat(textView: TextView, dueDate: Date) {
 }
 
 
-@BindingAdapter("android:text")
-fun setDouble(inputEditText: TextInputEditText, double: Double) {
-    if (double.equals(Double.NaN)) {
-        inputEditText.setText("")
-    } else inputEditText.setText(double.toString())
-}
 
-@InverseBindingAdapter(attribute = "android:text")
-fun getDouble(textInputEditText: TextInputEditText): Double {
-    var num: String = textInputEditText.text.toString();
-    return if (num.isEmpty()) {
-        "0".toDouble()
-    } else {
-        num.toDouble()
-    }
-}
 
 private fun hasDayPassedThisMonth(dueDate: Date, todayDate: Calendar): Boolean {
     val cal = Calendar.getInstance()

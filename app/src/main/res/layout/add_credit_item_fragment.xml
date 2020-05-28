@@ -38,7 +38,7 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/edit_text_credit_name"
                         android:singleLine="true"
-                        android:text="@={viewModel.creditName}"
+                        android:text="@={viewModel.creditNameLiveData}"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent" />
                 </com.google.android.material.textfield.TextInputLayout>
@@ -59,7 +59,7 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/edit_text_outstanding_balance"
                         android:layout_width="match_parent"
-                        android:text="@={viewModel.outStandingBalance}"
+                        android:text="@={viewModel.outStandingBalanceLiveData}"
 
                         android:layout_height="match_parent"
                         android:inputType="numberDecimal"
@@ -91,7 +91,7 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/edit_text_credit_limit"
                         android:layout_width="match_parent"
-                        android:text="@={viewModel.creditLimit}"
+                        android:text="@={viewModel.creditLimitLiveData}"
                         android:layout_height="match_parent"
                         android:inputType="numberDecimal"
                         android:maxLength="9" />
@@ -113,6 +113,7 @@
                     style="@style/TextAppearance.MaterialComponents.Headline5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:text="@{viewModel.utilizationLiveData}"
                     app:layout_constraintEnd_toEndOf="@id/text_view_label_utilization"
                     app:layout_constraintStart_toStartOf="@id/text_view_label_utilization"
                     app:layout_constraintTop_toBottomOf="@id/text_view_label_utilization" />
