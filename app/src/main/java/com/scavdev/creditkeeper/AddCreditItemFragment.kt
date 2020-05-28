@@ -64,8 +64,8 @@ class AddCreditItemFragment : Fragment() {
         button.setOnClickListener {
 
             Log.d("miker",
-                addViewModel.creditName.value.toString() + addViewModel.outStandingBalance.value.toString() +
-                        addViewModel.creditLimit.value.toString() + addViewModel.utilization.value.toString()
+                addViewModel.creditNameLiveData.value.toString() + addViewModel.outStandingBalanceLiveData.value.toString() +
+                        addViewModel.creditLimitLiveData.value.toString() + addViewModel.utilizationLiveData.value.toString()
             )
         }
     }
