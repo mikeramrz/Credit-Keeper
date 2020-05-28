@@ -62,8 +62,6 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        homeViewModel =
-            ViewModelProviders.of(this).get(HomeViewModel::class.java)
 
         val recyclerView =view.findViewById<RecyclerView>(R.id.credit_list)
         val adapter = ExpandableCreditAdapter()

@@ -10,7 +10,6 @@ import android.view.ViewGroup
 import android.widget.Button
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.fragment.findNavController
 import com.google.android.material.textfield.TextInputEditText
 import com.scavdev.creditkeeper.databinding.AddCreditItemFragmentBinding
 import com.scavdev.creditkeeper.di.ViewModelFactory
@@ -45,9 +44,9 @@ class AddCreditItemFragment : Fragment() {
             inflater, R.layout.add_credit_item_fragment,
             container, false
         )
-        binding.viewmodel = addViewModel
+        binding.viewModel = addViewModel
         binding.lifecycleOwner = this
-        return inflater.inflate(R.layout.add_credit_item_fragment, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -58,13 +57,16 @@ class AddCreditItemFragment : Fragment() {
         editTextDueDate.setOnClickListener {
             val datePickerDialog = DayOfMonthDatePickerDialog(view.context, Calendar.getInstance())
             datePickerDialog.setOnDateSetListener { _, _, _, dayNum ->
-               editTextDueDate.setText(dayNum.toString())
+                editTextDueDate.setText(dayNum.toString())
             }
             datePickerDialog.show()
         }
         button.setOnClickListener {
-            var b = findNavController().popBackStack()
-            Log.d("miker", b.toString())
+
+            Log.d("miker",
+                addViewModel.creditName.value.toString() + addViewModel.outStandingBalance.value.toString() +
+                        addViewModel.creditLimit.value.toString() + addViewModel.utilization.value.toString()
+            )
         }
     }
 }

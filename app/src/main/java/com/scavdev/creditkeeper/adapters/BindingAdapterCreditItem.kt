@@ -1,13 +1,9 @@
 package com.scavdev.creditkeeper.adapters
 
-import android.icu.text.DateFormatSymbols
 import android.icu.text.SimpleDateFormat
-import android.text.format.DateFormat
-import android.util.Log
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import com.scavdev.creditkeeper.R
-import java.time.Month
 import java.util.*
 
 @BindingAdapter("android:utilizationTextColor")
