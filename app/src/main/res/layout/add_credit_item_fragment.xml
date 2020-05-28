@@ -59,6 +59,8 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/edit_text_outstanding_balance"
                         android:layout_width="match_parent"
+                        android:text="@={viewModel.outStandingBalance}"
+
                         android:layout_height="match_parent"
                         android:inputType="numberDecimal"
                         android:maxLength="9" />
@@ -89,6 +91,7 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/edit_text_credit_limit"
                         android:layout_width="match_parent"
+                        android:text="@={viewModel.creditLimit}"
                         android:layout_height="match_parent"
                         android:inputType="numberDecimal"
                         android:maxLength="9" />
@@ -128,6 +131,7 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/edit_text_min_monthly"
                         android:layout_width="match_parent"
+                        android:text="@={viewModel.minMonthly}"
                         android:layout_height="match_parent"
                         android:inputType="numberDecimal"
                         android:maxLength="6" />
@@ -147,6 +151,7 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/edit_text_interest_rate"
                         android:layout_width="match_parent"
+                        android:text="@={viewModel.interestRate}"
                         android:layout_height="match_parent"
                         android:inputType="numberDecimal"
                         android:maxLength="4" />
