@@ -51,7 +51,6 @@ class AddCreditItemFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val button: Button = view.findViewById(R.id.button_add)
         val editTextDueDate: TextInputEditText = view.findViewById(R.id.edit_text_due_date)
 
         editTextDueDate.setOnClickListener {
@@ -61,12 +60,6 @@ class AddCreditItemFragment : Fragment() {
             }
             datePickerDialog.show()
         }
-        button.setOnClickListener {
-
-            Log.d("miker",
-                addViewModel.creditNameLiveData.value.toString() + addViewModel.outStandingBalanceLiveData.value.toString() +
-                        addViewModel.creditLimitLiveData.value.toString() + addViewModel.utilizationLiveData.value.toString()
-            )
-        }
     }
 }
+
