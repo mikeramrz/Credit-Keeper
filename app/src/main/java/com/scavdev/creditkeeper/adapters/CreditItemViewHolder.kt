@@ -7,7 +7,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.scavdev.creditkeeper.R
 import com.scavdev.creditkeeper.databinding.CreditItemCardBinding
 import com.scavdev.creditkeeper.model.CreditItem
-import kotlinx.android.synthetic.main.credit_item_card.view.*
 
 
 class CreditItemViewHolder(private val binding: CreditItemCardBinding) :
@@ -22,7 +21,7 @@ class CreditItemViewHolder(private val binding: CreditItemCardBinding) :
     fun bind(item: CreditItem) {
         binding.creditItem = item
         binding.root.setOnClickListener {
-            val view = it.findViewById<ConstraintLayout>(R.id.layout_expandable)
+            val view = it.findViewById<ConstraintLayout>(R.id.card_layout_expandable)
             TransitionManager.beginDelayedTransition(binding.creditItemCardView.parent as RecyclerView)
             if (view.visibility  == View.GONE){
                 view.visibility  = View.VISIBLE

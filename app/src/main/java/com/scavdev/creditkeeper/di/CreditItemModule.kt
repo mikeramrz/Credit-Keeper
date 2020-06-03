@@ -1,6 +1,7 @@
 package com.scavdev.creditkeeper.di
 
 import androidx.lifecycle.ViewModel
+import com.scavdev.creditkeeper.AddCreditItemFragment
 import com.scavdev.creditkeeper.ui.home.HomeFragment
 import com.scavdev.creditkeeper.ui.home.HomeViewModel
 import dagger.Binds
@@ -13,5 +14,6 @@ import dagger.multibindings.IntoMap
 abstract class CreditItemModule {
     @ContributesAndroidInjector
     abstract fun contributesHomeFragment(): HomeFragment
-
+    @ContributesAndroidInjector
+    abstract fun contributesAddCreditItemFragment(): AddCreditItemFragment
 }
