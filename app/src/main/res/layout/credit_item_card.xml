@@ -136,6 +136,14 @@
                     android:dateFormat="@{credit_item.dateDue}"
                     android:drawableStart="@drawable/ic_date_range_black_24dp"
                     />
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/card_view_delete_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/Widget.MaterialComponents.Button.TextButton"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/card_text_view_due_date"
+                    android:text="Delete" />
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>

@@ -14,6 +14,15 @@ class HomeViewModel @Inject constructor(private val creditRepository: ICreditRep
 
     val creditItems: LiveData<List<CreditItem>> = creditRepository.creditItemsFlow.asLiveData()
 
+    fun removeItem(creditItem: CreditItem){
+        viewModelScope.launch {
+       removeCreditItem(creditItem)
+        }
+    }
+
+    private fun removeCreditItem(creditItem: CreditItem){
+        creditRepository.deleteCreditItem(creditItem)
+    }
     fun add(){
         viewModelScope.launch {
             creditRepository.addCreditItem(CreditItem(0, "AMEX", BigDecimal(1433.54),
@@ -21,13 +30,4 @@ class HomeViewModel @Inject constructor(private val creditRepository: ICreditRep
             37.5))
         }
     }
-
-    fun add2(){
-        viewModelScope.launch {
-            creditRepository.addCreditItem(CreditItem(0, "AA", BigDecimal(1433.54),
-                BigDecimal(4000), 12.5, BigDecimal(75), Calendar.getInstance().time, 44.5, 32.5, 123.4,
-                37.5))
-        }
-    }
-
 }
