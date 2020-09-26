@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/bottom_sheet_delete_confirmation_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/TextAppearance.MaterialComponents.Headline5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:text="@string/delete_credit_item_confirmation"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="32dp"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:layout_marginTop="32dp"
+        android:id="@+id/bottom_sheet_delete_confirmation_button_no"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        android:text="No"
+        app:layout_constraintTop_toBottomOf="@id/bottom_sheet_delete_confirmation_text_view"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/bottom_sheet_delete_confirmation_button_yes"
+        />
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/bottom_sheet_delete_confirmation_button_yes"
+        android:layout_width="wrap_content"
+        style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+        android:layout_height="wrap_content"
+        android:text="Yes"
+        app:layout_constraintTop_toTopOf="@id/bottom_sheet_delete_confirmation_button_no"
+        app:layout_constraintTop_toBottomOf="@id/bottom_sheet_delete_confirmation_text_view"
+        app:layout_constraintStart_toStartOf="@id/bottom_sheet_delete_confirmation_button_no"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

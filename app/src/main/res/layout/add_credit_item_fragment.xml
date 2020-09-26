@@ -8,13 +8,13 @@
         <import type="android.view.View"/>
         <variable
             name="viewModel"
-            type="com.scavdev.creditkeeper.AddCreditItemViewModel" />
+            type="com.scavdev.creditkeeper.ui.addItem.AddCreditItemViewModel" />
     </data>
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".AddCreditItemFragment">
+        tools:context=".ui.addItem.AddCreditItemFragment">
 
         <ScrollView
             android:layout_width="match_parent"

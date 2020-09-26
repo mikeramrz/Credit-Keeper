@@ -1,4 +1,4 @@
-package com.scavdev.creditkeeper
+package com.scavdev.creditkeeper.ui.addItem
 
 import androidx.lifecycle.*
 import com.scavdev.creditkeeper.model.CreditItem

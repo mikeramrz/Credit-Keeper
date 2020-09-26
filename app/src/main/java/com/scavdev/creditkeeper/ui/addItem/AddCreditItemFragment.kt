@@ -1,16 +1,15 @@
-package com.scavdev.creditkeeper
+package com.scavdev.creditkeeper.ui.addItem
 
 import android.icu.util.Calendar
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.textfield.TextInputEditText
+import com.scavdev.creditkeeper.R
 import com.scavdev.creditkeeper.databinding.AddCreditItemFragmentBinding
 import com.scavdev.creditkeeper.di.ViewModelFactory
 import dagger.android.support.AndroidSupportInjection
@@ -54,7 +53,11 @@ class AddCreditItemFragment : Fragment() {
         val editTextDueDate: TextInputEditText = view.findViewById(R.id.edit_text_due_date)
 
         editTextDueDate.setOnClickListener {
-            val datePickerDialog = DayOfMonthDatePickerDialog(view.context, Calendar.getInstance())
+            val datePickerDialog =
+                DayOfMonthDatePickerDialog(
+                    view.context,
+                    Calendar.getInstance()
+                )
             datePickerDialog.setOnDateSetListener { _, _, _, dayNum ->
                 editTextDueDate.setText(dayNum.toString())
             }

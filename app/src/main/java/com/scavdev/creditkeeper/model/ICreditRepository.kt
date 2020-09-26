@@ -6,11 +6,11 @@ interface ICreditRepository {
 
     val creditItemsFlow: Flow<List<CreditItem>>
 
-    fun getCreditItemById(creditItemId: Int): Flow<CreditItem>
+    suspend fun getCreditItemById(creditItemId: Int): Flow<CreditItem>
 
-    fun updateCreditItem(creditItem: CreditItem)
+    suspend fun updateCreditItem(creditItem: CreditItem)
 
-    fun deleteCreditItem(creditItem: CreditItem)
+    suspend fun deleteCreditItem(creditItemId: Int)
 
     suspend fun addCreditItem(creditItem: CreditItem)
 }

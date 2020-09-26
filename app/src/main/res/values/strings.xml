@@ -4,4 +4,5 @@
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
     <string name="due_date_day_month_prompt">Day Of Month</string>
+    <string name="delete_credit_item_confirmation">Delete Credit Item?</string>
 </resources>

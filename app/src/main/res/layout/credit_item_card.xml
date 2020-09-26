@@ -8,9 +8,6 @@
             name="credit_item"
             type="com.scavdev.creditkeeper.model.CreditItem" />
 
-        <variable
-            name="clickListener"
-            type="com.scavdev.creditkeeper.adapters.ExpandableCreditAdapter.CreditItemCardViewListener" />
 
         <import type="java.math.BigDecimal" />
 

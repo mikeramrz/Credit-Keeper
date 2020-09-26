@@ -1,6 +1,5 @@
 package com.scavdev.creditkeeper.model
 
-import androidx.lifecycle.LiveData
 import androidx.room.*
 import kotlinx.coroutines.flow.Flow
 
@@ -19,8 +18,8 @@ interface CreditItemDao {
     @Query("DELETE FROM credit_items")
     fun deleteAll()
 
-    @Delete
-    fun delete(creditItem: CreditItem)
+    @Query("DELETE FROM credit_items WHERE id = :creditItemId")
+    suspend fun delete(creditItemId: Int)
 
     @Update
     fun update(creditItem: CreditItem)
