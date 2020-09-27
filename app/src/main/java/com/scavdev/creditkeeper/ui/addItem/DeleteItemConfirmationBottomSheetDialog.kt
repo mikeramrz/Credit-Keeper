@@ -55,7 +55,7 @@ class DeleteItemConfirmationBottomSheetDialog(
         }
 
         buttonYes.setOnClickListener {
-            mainViewModel.removeItem(creditItemID)
+            mainViewModel.removeItem(creditItemID, creditName)
             dismiss()
         }
 

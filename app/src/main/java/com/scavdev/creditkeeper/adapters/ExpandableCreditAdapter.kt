@@ -27,8 +27,6 @@ class ExpandableCreditAdapter(
 
     private var creditItems = emptyList<CreditItem>()
 
-    private var expandedViewHolderIdArray: MutableList<Int> = mutableListOf<Int>()
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CreditItemViewHolder {
 
         return CreditItemViewHolder(

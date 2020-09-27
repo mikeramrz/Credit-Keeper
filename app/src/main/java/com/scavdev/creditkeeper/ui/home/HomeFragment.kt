@@ -77,6 +77,17 @@ class HomeFragment : Fragment() {
             items?.let { adapter.setCreditItems(items) }
         })
 
+        homeViewModel.informSnackBarStateLiveData.observe(viewLifecycleOwner, Observer { creditItemEvent ->
+            creditItemEvent.getContentOfNotHandled()?.let{
+                when(it){
+                    is InformSnackBarState.NothingToShow -> Log.d("miker", "nothing to show response")
+                    is InformSnackBarState.ItemRemoved ->{
+                        Snackbar.make(view, "Removed ${it.creditName}", Snackbar.LENGTH_SHORT).show()
+                    }
+                }
+            }
+        })
+
         val fab: View = view.findViewById(R.id.fab_add_credit_item)
         fab.setOnClickListener {
             /* Snackbar.make(v, "Click!!",Snackbar.LENGTH_SHORT).show()
