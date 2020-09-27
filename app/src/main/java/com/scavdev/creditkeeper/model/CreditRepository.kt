@@ -13,15 +13,15 @@ class CreditRepository @Inject constructor(
     override val creditItemsFlow: Flow<List<CreditItem>>
         get() = creditItemDao.getAllCreditItemFlow()
 
-    override fun getCreditItemById(creditItemId: Int): Flow<CreditItem> =
+    override suspend fun getCreditItemById(creditItemId: Int): Flow<CreditItem> =
         creditItemDao.getCreditItem(creditItemId.toString())
 
-    override fun updateCreditItem(creditItem: CreditItem) {
+    override suspend fun updateCreditItem(creditItem: CreditItem) {
         creditItemDao.update(creditItem)
     }
 
-   override fun deleteCreditItem(creditItem: CreditItem){
-        creditItemDao.delete(creditItem)
+   override suspend fun deleteCreditItem(creditItemId: Int){
+        creditItemDao.delete(creditItemId)
     }
 
     override suspend fun addCreditItem(creditItem: CreditItem) {

@@ -15,7 +15,6 @@ import androidx.fragment.app.FragmentTransaction
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
@@ -28,6 +27,7 @@ import com.scavdev.creditkeeper.adapters.ExpandableCreditAdapter
 import com.scavdev.creditkeeper.databinding.CreditItemCardBinding
 import com.scavdev.creditkeeper.databinding.FragmentHomeBinding
 import com.scavdev.creditkeeper.di.ViewModelFactory
+import com.scavdev.creditkeeper.model.InformSnackBarState
 import dagger.android.support.AndroidSupportInjection
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.credit_item_card.*
@@ -44,6 +44,7 @@ class HomeFragment : Fragment() {
     lateinit var viewModelFactory: ViewModelFactory
 
     private lateinit var homeViewModel: HomeViewModel
+    private lateinit var binding : FragmentHomeBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -57,25 +58,41 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        return inflater.inflate(R.layout.fragment_home, container, false)
+        binding = DataBindingUtil.inflate(
+            inflater, R.layout.fragment_home,
+            container, false
+        )
+        binding.lifecycleOwner = this
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val recyclerView =view.findViewById<RecyclerView>(R.id.credit_list)
-        val adapter = ExpandableCreditAdapter()
+        val recyclerView = view.findViewById<RecyclerView>(R.id.credit_list)
+        val adapter = ExpandableCreditAdapter(parentFragmentManager, homeViewModel)
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(view.context)
         homeViewModel.creditItems.observe(viewLifecycleOwner, Observer { items ->
             items?.let { adapter.setCreditItems(items) }
         })
 
+        homeViewModel.informSnackBarStateLiveData.observe(viewLifecycleOwner, Observer { creditItemEvent ->
+            creditItemEvent.getContentOfNotHandled()?.let{
+                when(it){
+                    is InformSnackBarState.NothingToShow -> Log.d("miker", "nothing to show response")
+                    is InformSnackBarState.ItemRemoved ->{
+                        Snackbar.make(view, "Removed ${it.creditName}", Snackbar.LENGTH_SHORT).show()
+                    }
+                }
+            }
+        })
+
         val fab: View = view.findViewById(R.id.fab_add_credit_item)
         fab.setOnClickListener {
-           /* Snackbar.make(v, "Click!!",Snackbar.LENGTH_SHORT).show()
-            homeViewModel.add()
-            homeViewModel.add2()*/
+            /* Snackbar.make(v, "Click!!",Snackbar.LENGTH_SHORT).show()
+             homeViewModel.add()
+             homeViewModel.add2()*/
             findNavController().navigate(R.id.action_navigation_home_to_addCreditItemFragment)
         }
 

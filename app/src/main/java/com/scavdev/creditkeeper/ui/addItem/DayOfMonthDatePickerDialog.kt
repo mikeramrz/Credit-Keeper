@@ -1,4 +1,4 @@
-package com.scavdev.creditkeeper
+package com.scavdev.creditkeeper.ui.addItem
 
 import android.app.DatePickerDialog
 import android.content.Context

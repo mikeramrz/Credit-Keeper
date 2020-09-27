@@ -21,6 +21,7 @@
             android:id="@+id/fab_add_credit_item"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            app:backgroundTint="@color/colorSecondaryAccent"
             android:layout_margin="16dp"
             android:layout_gravity="end|bottom"
             android:src="@drawable/ic_credit_card_add"
