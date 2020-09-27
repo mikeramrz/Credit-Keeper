@@ -140,7 +140,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     app:icon="@drawable/ic_baseline_delete_24"
-                    style="@style/Widget.MaterialComponents.Button.TextButton"
+                    android:text="@string/card_view_delete_button_text"
+                    style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
                     app:iconTint="@color/colorSecondaryAccentDark"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/card_text_view_rate" />
