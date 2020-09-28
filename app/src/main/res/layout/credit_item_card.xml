@@ -72,7 +72,7 @@
                     style="@style/TextAppearance.MaterialComponents.Headline6"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@{String.valueOf(credit_item.utilization) + `%`}"
+                    android:text="@{String.format(`%.1f`,credit_item.utilization) + `%`}"
                     android:utilizationTextColor="@{credit_item.utilization}"
                     app:layout_constraintEnd_toEndOf="@id/card_text_view_header_label_utilization"
                     app:layout_constraintStart_toStartOf="@id/card_text_view_header_label_utilization"
@@ -93,6 +93,15 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:visibility="gone">
+
+                <View
+                    android:id="@+id/card_view_bottom_divider_view"
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:background="@color/colorAccentDark"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/card_text_view_limit"
+                    app:layout_constraintEnd_toEndOf="@id/card_text_view_due_date"/>
 
                 <TextView
                     android:id="@+id/card_text_view_limit"
@@ -125,7 +134,7 @@
                     android:dateFormat="@{credit_item.dateDue}"
                     android:drawableStart="@drawable/ic_date_range_black_24dp"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="@id/card_view_bottom_divider_view" />
 
                 <TextView
                     android:id="@+id/card_text_view_minimum"
@@ -144,6 +153,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/card_view_delete_button_text"
                     app:icon="@drawable/ic_baseline_delete_24"
+                    android:textColor="@color/colorSecondaryAccentDark"
                     app:iconTint="@color/colorSecondaryAccentDark"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/card_text_view_rate" />
