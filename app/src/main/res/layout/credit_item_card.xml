@@ -36,7 +36,7 @@
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/card_text_view_credit_name"
                     android:textSize="24sp"
-                    android:fontFamily="sans-serif-light"
+                    android:fontFamily="sans-serif-medium"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
@@ -101,7 +101,7 @@
                 <View
                     android:id="@+id/card_view_bottom_divider_view"
                     android:layout_width="0dp"
-                    android:layout_height="4dp"
+                    android:layout_height="2dp"
                     android:utilizationDividerColor="@{credit_item.utilization}"
                     android:background="@color/colorAccentDark"
                     app:layout_constraintTop_toTopOf="parent"
