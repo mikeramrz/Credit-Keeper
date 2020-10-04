@@ -2,6 +2,7 @@ package com.scavdev.creditkeeper.model
 
 import androidx.room.*
 import kotlinx.coroutines.flow.Flow
+import java.math.BigDecimal
 
 @Dao
 interface CreditItemDao {
@@ -24,4 +25,6 @@ interface CreditItemDao {
     @Update
     fun update(creditItem: CreditItem)
 
+   /* @Query("UPDATE credit_items SET outstandingBalance = :newOutStandingBalance WHERE id = :creditItemId")
+    suspend fun updateOutstandingBalance(creditItemId: Int, newOutStandingBalance: BigDecimal, newUtilization: BigDecimal)*/
 }

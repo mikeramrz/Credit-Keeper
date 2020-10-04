@@ -17,7 +17,8 @@ import javax.inject.Singleton
         AppModule::class,
         AppModule::class,
         CreditItemRepositoryModule::class,
-        CreditItemDatabaseModule::class
+        CreditItemDatabaseModule::class,
+        CreditItemUtilityModule::class
     ]
 )
 

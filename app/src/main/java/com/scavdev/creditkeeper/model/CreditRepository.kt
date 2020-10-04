@@ -2,6 +2,7 @@ package com.scavdev.creditkeeper.model
 
 import androidx.annotation.MainThread
 import kotlinx.coroutines.flow.Flow
+import java.math.BigDecimal
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -20,7 +21,11 @@ class CreditRepository @Inject constructor(
         creditItemDao.update(creditItem)
     }
 
-   override suspend fun deleteCreditItem(creditItemId: Int){
+    /*override suspend fun updateCreditItemBalance(creditItemId: Int, newBalance: BigDecimal, newUtilization: BigDecimal) {
+        creditItemDao.updateOutstandingBalance(creditItemId, newBalance, newUtilization)
+    }*/
+
+    override suspend fun deleteCreditItem(creditItemId: Int){
         creditItemDao.delete(creditItemId)
     }
 

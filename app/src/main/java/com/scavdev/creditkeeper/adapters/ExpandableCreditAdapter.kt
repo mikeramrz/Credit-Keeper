@@ -9,10 +9,12 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.FragmentManager
 
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.scavdev.creditkeeper.R
 import com.scavdev.creditkeeper.databinding.CreditItemCardBinding
 import com.scavdev.creditkeeper.model.CreditItem
 import com.scavdev.creditkeeper.ui.addItem.DeleteItemConfirmationBottomSheetDialog
+import com.scavdev.creditkeeper.ui.editItem.EditItemBottomSheetDialogFragment
 import com.scavdev.creditkeeper.ui.home.HomeViewModel
 import javax.inject.Inject
 
@@ -74,6 +76,14 @@ class ExpandableCreditAdapter(
                     }
                 }
             }
+
+            binding.cardViewUpdateItemButton.setOnClickListener {
+
+                binding.creditItem?.id?.let { id ->
+                        showEditItemBottomDialog(id)
+                }
+            }
+
             binding.root.setOnClickListener {
                 val view = it.findViewById<ConstraintLayout>(R.id.card_layout_expandable)
                 TransitionManager.beginDelayedTransition(binding.creditItemCardView.parent as ViewGroup)
@@ -86,6 +96,11 @@ class ExpandableCreditAdapter(
                     }
                 }
             }
+        }
+
+        private fun showEditItemBottomDialog(itemId: Int){
+            val bottomSheetDialog: BottomSheetDialogFragment = EditItemBottomSheetDialogFragment.newInstance(itemId)
+            bottomSheetDialog.show(fragmentManager, "bottom_sheet_dialog_edit")
         }
 
         private fun showDeleteItemConfirmationBottomDialog(itemId: Int, creditName: String) {

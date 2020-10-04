@@ -1,6 +1,7 @@
 package com.scavdev.creditkeeper.model
 
 import kotlinx.coroutines.flow.Flow
+import java.math.BigDecimal
 
 interface ICreditRepository {
 
@@ -13,4 +14,6 @@ interface ICreditRepository {
     suspend fun deleteCreditItem(creditItemId: Int)
 
     suspend fun addCreditItem(creditItem: CreditItem)
+
+   // suspend fun updateCreditItemBalance(creditItemId: Int, newBalance: BigDecimal, newUtilization: BigDecimal)
 }

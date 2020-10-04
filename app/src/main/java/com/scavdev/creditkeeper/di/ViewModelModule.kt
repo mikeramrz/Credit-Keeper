@@ -3,6 +3,7 @@ package com.scavdev.creditkeeper.di
 import androidx.lifecycle.ViewModel
 import com.scavdev.creditkeeper.ui.addItem.AddCreditItemViewModel
 import com.scavdev.creditkeeper.ui.addItem.DeleteItemConfirmationBottomSheetDialog
+import com.scavdev.creditkeeper.ui.editItem.EditItemBottomSheetDialogFragment
 import com.scavdev.creditkeeper.ui.home.HomeViewModel
 import dagger.Binds
 import dagger.Module
@@ -24,5 +25,8 @@ abstract class ViewModelModule {
 
     @ContributesAndroidInjector
     abstract fun DeleteItemConfirmationBottomSheetDialog(): DeleteItemConfirmationBottomSheetDialog
+
+    @ContributesAndroidInjector
+    abstract fun EditItemBottomSheetDialog(): EditItemBottomSheetDialogFragment
 
 }
